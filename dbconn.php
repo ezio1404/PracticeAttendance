@@ -4,6 +4,17 @@ function dbconn(){
   return new PDO("mysql:hostname=locahost;dbname=practice_db","root","");
 }
 
+function login($username,$pass){
+    $dbconn=dbconn();
+    $sql="SELECT * FROM tbl_accounts WHERE firstname = ? AND CONCAT(course,year)=? ";
+    $stmt=$dbconn->prepare($sql);
+    $stmt->execute(array($username,$pass));
+    $user=$stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $dbconn=null;
+    return $user;
+}
+
 function insertAccounts($a,$b,$c,$d,$e){
  $dbconn=dbconn();
  $sql="INSERT INTO tbl_accounts(firstname,lastname,course,year,school) VALUES(?,?,?,?,?)";
