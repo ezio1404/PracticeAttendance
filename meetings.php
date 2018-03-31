@@ -1,9 +1,3 @@
-<?php
-
-
-session_start();
-include_once 'dbconn.php';
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +9,6 @@ include_once 'dbconn.php';
     <script src="main.js"></script>
 </head>
 <body>
-    <label for="name"> <?php echo $_SESSION['id']?></label>
-    <label for="name"> <?php echo $_SESSION['fullname']?></label>
+    
 </body>
 </html>

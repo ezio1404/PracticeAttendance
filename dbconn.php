@@ -9,8 +9,7 @@ function login($username,$pass){
     $sql="SELECT * FROM tbl_accounts WHERE firstname = ? AND CONCAT(course,year)=? ";
     $stmt=$dbconn->prepare($sql);
     $stmt->execute(array($username,$pass));
-    $user=$stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    $user=$stmt->fetch();
     $dbconn=null;
     return $user;
 }
