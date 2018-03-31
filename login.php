@@ -1,8 +1,8 @@
 <?php
 session_start();
 include_once 'dbconn.php';
-$username="";
-$password="";
+// $username="";
+// $password="";
 if(isset($_POST['login'])){
     $username=$_POST["username"];
     $password=$_POST["password"];
@@ -11,23 +11,19 @@ if(isset($_POST['login'])){
 
         $user=login($username,$password);
         
-        if($user['firstname']==$username ){
+        if($user['firstname']==$username &&($user['course'].$user['year'])==$password ){
             $_SESSION['id']=$user['account_id'];
             $_SESSION['fullname']=$user['lastname'].",".$user['firstname'];
-            
-
             // echo $_SESSION['id'].'<br/>';
             // echo $_SESSION['fullname'].'<br/>';
-        
             header("location:test.php");
         }
         else{
-            echo "shit 1";
-            
+            header("location:index.php?invalid_Credentials");  
         }
     }
     else{
-        echo "shit 2    ";
+        header("location:index.php?input_fields_missing");
 
     }
 

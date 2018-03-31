@@ -9,25 +9,42 @@ include_once 'dbconn.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Attendance </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="w3.css">
 </head>
 <body>
-    <form action="addAccounts.php">
-    <input type="text" placeholder="firstname" name="fname">
-    <input type="text" placeholder="lastname" name="lname">
+    <form action="addAccounts.php" method="POST">
+    <input type="text" placeholder="firstname" name="firstname">
+    <input type="text" placeholder="lastname" name="lastname">
     <input type="text" placeholder="course" name="course">
-    <input type="text" placeholder="year" name="year">
+    <input type="number"  placeholder="year" name="year">
     <input type="text" placeholder="school" name="school">
+    <input type="submit" name="addAccount" value="Add">
     </form>
 
-    <table>
+    <table class="w3-table w3-striped">
         <thead>
             <tr>
                 <th>Idno</th>
                 <th>Name</th>
-                <th>Course and year</th>
+                <th>Course &amp; year</th>
                 <th>Action</th>
             </tr>
         </thead>
+        <tbody>
+        <?php
+        $accounts=getAllAccounts();
+            foreach ($accounts as $a) {   
+        ?>
+            <tr>
+                <td><?php echo $a["account_id"];?></td>
+                <td><?php echo $a["lastname"].','.$a["firstname"];?></td>
+                <td><?php echo $a["course"].'-'.$a["year"];?></td>
+                <td>
+
+                </td>
+            </tr>
+            <?php }?>
+        </tbody>
     </table>
 </body>
 </html>
