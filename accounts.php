@@ -27,6 +27,7 @@ include_once 'dbconn.php';
                 <th>Idno</th>
                 <th>Name</th>
                 <th>Course &amp; year</th>
+                <th>School</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -36,15 +37,21 @@ include_once 'dbconn.php';
             foreach ($accounts as $a) {   
         ?>
             <tr>
-                <td><?php echo $a["account_id"];?></td>
-                <td><?php echo $a["lastname"].','.$a["firstname"];?></td>
-                <td><?php echo $a["course"].'-'.$a["year"];?></td>
+                <td><?php echo $a['account_id'];?></td>
+                <td><?php echo $a['lastname'].','.$a['firstname'];?></td>
+                <td><?php echo $a['course'].'-'.$a['year'];?></td>
+                <td><?php echo $a['school'];?></td>
                 <td>
-
+                    <a href="updateAccounts.php?id=<?php echo $a['account_id'];?>">Update</a>
+                    <a href="deleteAccount.php?id=<?php echo $a['account_id'];?>">Delete</a>
                 </td>
             </tr>
             <?php }?>
         </tbody>
     </table>
+    <form method="post" action ="searchAccounts.php">
+    <input type="text" name="keyword" placeholder="Search..">
+    <input type="submit" name="search" value="search">
+    </form>
 </body>
 </html>
