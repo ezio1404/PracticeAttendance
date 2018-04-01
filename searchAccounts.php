@@ -56,6 +56,6 @@ if(isset($_POST['search'])){
     <?php }?>
         </tbody>
     </table>
-    
+    <a href="accounts.php">Back to Accounts</a>
 </body>
 </html>

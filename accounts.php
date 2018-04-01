@@ -10,18 +10,28 @@ include_once 'dbconn.php';
     <title>Attendance </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="w3.css">
+    <style>
+    input{
+        display:block;
+    }
+    </style>
 </head>
 <body>
-    <form action="addAccounts.php" method="POST">
-    <input type="text" placeholder="firstname" name="firstname">
-    <input type="text" placeholder="lastname" name="lastname">
-    <input type="text" placeholder="course" name="course">
-    <input type="number"  placeholder="year" name="year">
-    <input type="text" placeholder="school" name="school">
-    <input type="submit" name="addAccount" value="Add">
-    </form>
 
-    <table class="w3-table w3-striped">
+<?php include_once 'nav.php';?>
+<div class="w3-row">
+<div class="w3-col s3  w3-center">
+    <form action="addAccounts.php" method="POST">
+    <input class="w3-input w3-animate-input" type="text" placeholder="firstname" name="firstname">
+    <input class="w3-input w3-animate-input" type="text" placeholder="lastname" name="lastname">
+    <input class="w3-input w3-animate-input" type="text" placeholder="course" name="course">
+    <input class="w3-input w3-animate-input" type="number"  placeholder="year" name="year">
+    <input class="w3-input w3-animate-input" type="text" placeholder="school" name="school">
+    <input class="w3-input w3-animate-input" type="submit" name="addAccount" value="Add">
+    </form>
+</div>
+<div class="w3-col m6 w3-center">
+    <table class="w3-table-all">
         <thead>
             <tr>
                 <th>Idno</th>
@@ -49,9 +59,13 @@ include_once 'dbconn.php';
             <?php }?>
         </tbody>
     </table>
+    </div>
+    <div class="w3-col m3 w3-center">
     <form method="post" action ="searchAccounts.php">
-    <input type="text" name="keyword" placeholder="Search..">
-    <input type="submit" name="search" value="search">
+    <input class="w3-input w3-animate-input" type="text" name="keyword" placeholder="Search..">
+    <input class="w3-input w3-animate-input" type="submit" name="search" value="search">
     </form>
+    </div>
+    </div>
 </body>
 </html>
